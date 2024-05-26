@@ -1,12 +1,12 @@
 // Causa vs Efeito
 import { useEffect, useState } from "react"
 
-interface User {
+interface UserGithubProps {
   name: string;
   github: string;
 }
 
-function fetchUser() {
+function findUserGithubData() {
   return {
     data: {
       user: {
@@ -18,24 +18,24 @@ function fetchUser() {
 }
 
 export function UserProfile() {
-  const [shouldNotRenderUserName, setShouldNotRenderUserName] = useState(false)
-  const [userData, setUserData] = useState<User>()
+  const [isLoading, setIsLoading] = useState(false)
+  const [userData, setUserData] = useState<UserGithubProps>()
 
   useEffect(() => {
-    function loadUser() {
-      setShouldNotRenderUserName(true)
+    function findUserDetails() {
+      setIsLoading(true)
 
-      const fetchUserResponse = fetchUser()
+      const fetchUserResponse = findUserGithubData()
 
       setUserData(fetchUserResponse.data.user)
-      
-      setShouldNotRenderUserName(false)
+
+      setIsLoading(false)
     }
 
-    loadUser()
+    findUserDetails()
   })
 
-  if (shouldNotRenderUserName) {
+  if (isLoading) {
     return <p>Loading...</p>
   }
 
