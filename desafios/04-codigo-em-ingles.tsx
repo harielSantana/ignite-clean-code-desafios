@@ -1,12 +1,12 @@
 // Código em inglês 
 import { useState } from "react"
 
-interface Product {
+interface ProductTypes {
   title: string;
   price: string;
 }
 
-const productList = [
+const productList: ProductTypes[] = [
   {
     title: 'Macarrão',
     price: 'R$ 25,00'
@@ -17,13 +17,13 @@ const productList = [
   }
 ]
 
-export function ListProduto() {
-  const [filteredProdutos, setFilteredProdutos] = useState<Product[]>([])
+export function SearchProduct() {
+  const [filteredProdutos, setFilteredProdutos] = useState<ProductTypes[]>([])
 
   function searchProduto(search: string) {
-    const filtrado = productList.filter(product => product.title.includes(search))
+    const  productsFilter= productList.filter(product => product.title.includes(search))
 
-    setFilteredProdutos(filtrado)
+    setFilteredProdutos(productsFilter)
   }
 
   return (

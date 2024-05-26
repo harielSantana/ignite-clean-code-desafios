@@ -17,7 +17,7 @@ function findUserGithubData() {
   }
 }
 
-export function UserProfile() {
+export function UserGithubProfile() {
   const [isLoading, setIsLoading] = useState(false)
   const [userData, setUserData] = useState<UserGithubProps>()
 
